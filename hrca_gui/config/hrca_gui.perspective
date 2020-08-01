@@ -1,0 +1,240 @@
+{
+  "keys": {},
+  "groups": {
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "type": "repr",
+          "repr": "{u'rqt_rviz/RViz': [1], u'rqt_dot/Dot': [1], u'rqt_image_view/ImageView': [1], u'rqt_publisher/Publisher': [1], u'jsk_rqt_plugins/ServiceButtons': [1]}"
+        }
+      },
+      "groups": {
+        "plugin__rqt_dot__Dot__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__DotPluginUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'Dot'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__jsk_rqt_plugins__ServiceButtons__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u''"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "layout_param": {
+                  "type": "repr",
+                  "repr": "u'package://hrca_gui/config/tbt_button_layout.yaml'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_rviz__RViz__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'hrca_gui_rviz.rviz[*] - RViz'"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "rviz_config_file": {
+                  "type": "repr",
+                  "repr": "u''"
+                },
+                "hide_menu": {
+                  "type": "repr",
+                  "repr": "False"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_image_view__ImageView__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__ImageViewWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'Image View'"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "max_range": {
+                  "type": "repr",
+                  "repr": "10.0"
+                },
+                "rotate": {
+                  "type": "repr",
+                  "repr": "0"
+                },
+                "smooth_image": {
+                  "type": "repr",
+                  "repr": "False"
+                },
+                "mouse_pub_topic": {
+                  "type": "repr",
+                  "repr": "u'/aruco_marker_publisher/result_mouse_left'"
+                },
+                "num_gridlines": {
+                  "type": "repr",
+                  "repr": "0"
+                },
+                "toolbar_hidden": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "zoom1": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "dynamic_range": {
+                  "type": "repr",
+                  "repr": "False"
+                },
+                "topic": {
+                  "type": "repr",
+                  "repr": "u'/aruco_marker_publisher/result'"
+                },
+                "publish_click_location": {
+                  "type": "repr",
+                  "repr": "False"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_publisher__Publisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__PublisherWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'Message Publisher'"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "publishers": {
+                  "type": "repr",
+                  "repr": "u\"[{'topic_name': '/human_done_task_1', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 0, 'counter': 1205}, {'topic_name': '/human_done_task_2', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 1, 'counter': 959}, {'topic_name': '/human_done_task_3', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 2, 'counter': 413}, {'topic_name': '/human_done_task_4', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 3, 'counter': 343}, {'topic_name': '/human_done_task_5', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 4, 'counter': 0}, {'topic_name': '/human_done_task_6', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 5, 'counter': 0}, {'topic_name': '/human_done_task_7', 'type_name': 'std_msgs/Empty', 'enabled': False, 'rate': 1.0, 'expressions': {}, 'publisher_id': 6, 'counter': 0}]\""
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_shell__Shell__1": {
+          "keys": {},
+          "groups": {
+            "plugin": {
+              "keys": {
+                "shell_type": {
+                  "type": "repr",
+                  "repr": "u'2'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        }
+      }
+    },
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "type": "repr(QByteArray.hex)",
+          "repr(QByteArray.hex)": "QtCore.QByteArray('01d9d0cb000200000000061c0000004200000eff0000086d0000061c0000006000000eff0000086d00000000000000000f00')",
+          "pretty-print": "       B   m   `   m     "
+        },
+        "state": {
+          "type": "repr(QByteArray.hex)",
+          "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff00000000fd0000000100000003000008e4000007e5fc0100000002fc000000000000061a0000024400fffffffc0200000004fb00000038007200710074005f0064006f0074005f005f0044006f0074005f005f0031005f005f0044006f00740050006c007500670069006e005500690100000013000002570000009c00fffffffb00000040007200710074005f007300680065006c006c005f005f005300680065006c006c005f005f0031005f005f005300680065006c006c00570069006400670065007401000005340000013e0000000000000000fb00000026007200710074005f007200760069007a005f005f005200560069007a005f005f0031005f005f0100000270000003a9000000bb00fffffffb00000058007200710074005f007000750062006c00690073006800650072005f005f005000750062006c00690073006800650072005f005f0031005f005f005000750062006c00690073006800650072005700690064006700650074010000061f000001d90000008a00fffffffc00000620000002c40000016800fffffffc0200000002fb0000005a007200710074005f0069006d006100670065005f0076006900650077005f005f0049006d0061006700650056006900650077005f005f0031005f005f0049006d00610067006500560069006500770057006900640067006500740100000013000004e80000005800fffffffb00000048006a0073006b005f007200710074005f0070006c007500670069006e0073005f005f00530065007200760069006300650042007500740074006f006e0073005f005f0031005f005f0100000501000002f70000009a00ffffff000008e40000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')",
+          "pretty-print": "                     D                                       W                                        4 >                           p                                                                          Zrqt_image_view__ImageView__1__ImageViewWidget          Hjsk_rqt_plugins__ServiceButtons__1__                            6MinimizedDockWidgetsToolbar        "
+        }
+      },
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "type": "repr",
+              "repr": "8"
+            }
+          },
+          "groups": {}
+        }
+      }
+    }
+  }
+}

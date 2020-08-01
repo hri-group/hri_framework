@@ -1,0 +1,19 @@
+<launch>
+    <arg name="image_topic" default="/usb_cam/image_raw"/>
+    <arg name="camera_name" default="usb_cam"/>
+    <arg name="board_size" default="7x7"/>
+    <arg name="pattern" default="chessboard"/>
+    <arg name="square_size" default="0.05"/>
+
+
+
+    <node name="calib" pkg="camera_calibration" type="cameracalibrator.py"
+    args="--size $(arg board_size)
+          --square $(arg square_size)
+          --pattern=chessboard
+          --no-service-check
+          image:=$(arg image_topic)
+          camera:=$(arg camera_name)"
+          output="screen">
+    </node>
+</launch>

@@ -1,0 +1,26 @@
+image: ros:indigo-ros-base
+build:
+  stage: build
+
+  before_script:
+     - sed -E -i "s/http:\/\/.*\.ubuntu\.com/http:\/\/mirror.csclub.uwaterloo.ca/" /etc/apt/sources.list
+     - /bin/echo -e "deb http://robohub.eng.uwaterloo.ca/mirror/ros/ros/ubuntu/ $(lsb_release -s -c) main\n" > /etc/apt/sources.list.d/ros-latest.list
+     - apt update && apt install build-essential ros-indigo-tf -y
+     - mkdir -p catkin_ws/src
+     - cd catkin_ws/src
+     - catkin_init_workspace
+     - cd ../..
+     - cp -r robohub_object_tracking catkin_ws/src
+     - cd catkin_ws
+     - catkin_make
+     - source devel/setup.bash
+     - ls
+     - env | grep PYTHON
+  script: 
+    - rostest robohub_object_tracking run_tests.test
+
+# run tests using the binary built before
+#test:
+#  stage: test
+#  script:
+#    - ./runmytests.sh

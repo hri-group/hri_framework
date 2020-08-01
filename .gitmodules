@@ -1,0 +1,6 @@
+[submodule "hrca_dependencies/pi_trees"]
+	path = hrca_dependencies/pi_trees
+	url = https://github.com/RVSagar/pi_trees.git
+[submodule "hrca_dependencies/ros_object_tracking_utilities"]
+	path = hrca_dependencies/ros_object_tracking_utilities
+	url = https://github.com/RVSagar/ros_object_tracking_utilities.git

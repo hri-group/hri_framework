@@ -1,0 +1,41 @@
+<launch>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="worlds/empty.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="recording" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find robohub_object_tracking_demo)/urdf/demo_robot.urdf.xacro" />
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -z 0.01 -model demo_robot_name" respawn="false" output="screen" />
+
+  <node pkg="tf" type="static_transform_publisher" name="static_tf" args="0 0 0 0 0 0 /map /world 100"/>
+
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find robohub_object_tracking_demo)/launch/test_gazebo_rviz.rviz" />
+
+
+  <node name="tf" pkg="tf" type="static_transform_publisher" 
+          args="0 0 0 -1.5707 0 -1.5707 /camera_link camera_color_optical_frame 50"/>
+
+  <node pkg="aruco_ros" type="marker_publisher" name="aruco_marker_publisher" output="screen">
+    <remap from="/image" to="/demo_robot/camera/image_raw" />
+    <remap from="/camera_info" to="demo_robot/camera/camera_info" />
+    <param name="reference_frame"    value="/camera_link"/>
+    <param name="marker_size"      value="0.1"/>
+    <param name="image_is_rectified" value="True"/>
+    <param name="camera_frame"       value="/camera_color_optical_frame"/>
+  </node>
+
+  <node pkg="robohub_object_tracking_demo" type="gazebo_demo_node.py" name="demo"/>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+      <remap from="robot_description" to="robot_description" />
+  </node>
+
+
+
+</launch>

@@ -1,0 +1,19 @@
+<launch>
+    <arg name="info_topic" default="/camera/camera_info"/>
+    <arg name="image_topic" default="/camera/image"/>
+    <arg name="camera_frame" default="/camera_frame"/>
+    <arg name="marker_size_m"      default="0.05"/> 
+    <arg name="out_frame"       default="base"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+    <arg name="rectified" default="True"/>
+
+
+    <node pkg="aruco_ros" type="marker_publisher" name="aruco_marker_publisher">
+        <remap from="/camera_info" to="$(arg info_topic)" />
+        <remap from="/image" to="$(arg image_topic)" />
+        <param name="image_is_rectified" value="$(arg rectified)"/>
+        <param name="marker_size"        value="$(arg marker_size_m)"/>
+        <param name="reference_frame"    value="$(arg out_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="camera_frame"       value="$(arg camera_frame)"/>
+    </node>
+
+</launch>

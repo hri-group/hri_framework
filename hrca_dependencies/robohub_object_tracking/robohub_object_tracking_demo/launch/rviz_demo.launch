@@ -1,0 +1,10 @@
+<launch>
+
+
+<node name="visualization" pkg="rviz" type="rviz"  args="-d $(find robohub_object_tracking_demo)/launch/rviz_config.rviz"/>
+
+<node name="node" pkg="robohub_object_tracking_demo" type="demo_node.py" output="screen"/>
+
+<node pkg="tf" type="static_transform_publisher" name="static_tf" args="0 0 0 0 0 0 /map /world 100"/>
+
+</launch>

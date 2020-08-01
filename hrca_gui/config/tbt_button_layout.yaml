@@ -1,0 +1,28 @@
+- name: 'Bottom'
+  service: 'dummy'
+  column: 0
+  #image: "package://jsk_rviz_plugins/icons/hand-grasp-pose.jpg"
+- name: 'Side_Left'
+  service: 'dummy'
+  column: 0
+- name: 'Side_Right'
+  service: 'dummy'
+  column: 0
+- name: 'Side_Front'
+  service: 'dummy'
+  column: 1
+- name: 'Side_Back'
+  service: 'dummy'
+  column: 1
+- name: 'Home'
+  service: 'dummy'
+  column: 1
+- name: 'Open Gripper'
+  service: 'dummy'
+  column: 2
+- name: 'Close Gripper'
+  service: 'dummy'
+  column: 2
+- name: 'Stop Action'
+  service: 'dummy'
+  column: 2

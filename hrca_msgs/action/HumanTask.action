@@ -1,0 +1,8 @@
+#goal definition
+string human_action
+
+---
+#result definition
+
+---
+#feedback, for now just return "status" e.g. 'running'

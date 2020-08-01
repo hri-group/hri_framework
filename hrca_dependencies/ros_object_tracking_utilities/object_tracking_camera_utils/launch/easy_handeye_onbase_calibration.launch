@@ -1,0 +1,56 @@
+<launch>
+
+    <arg name="width" default="640"/>
+    <arg name="height" default="480"/>
+
+    <arg name="video_device" default="/dev/video0"/>
+    <arg name="pixel_format" default="yuyv" />
+    <arg name="camera_frame_id" default="usb_cam" />
+    <arg name="io_method" default="mmap"/>
+
+    <arg name="camera_name" default="test_name"/>
+    <arg name="camera_info_url" default="package://object_tracking_camera_utils/config/example_params.yaml"/>
+
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+      <param name="video_device" value="$(arg video_device)" />
+      <param name="image_width" value="$(arg width)" />
+      <param name="image_height" value="$(arg height)" />
+      <param name="pixel_format" value="$(arg pixel_format)" />
+      <param name="camera_frame_id" value="$(arg camera_frame_id)" />
+      <param name="io_method" value="$(arg io_method)"/>
+      <param name="camera_info_url" value="$(arg camera_info_url)"/>
+      <param name="camera_name" value="$(arg camera_name)"/>
+    </node>
+
+
+
+    <arg name="info_topic" default="/camera/camera_info"/>
+    <arg name="image_topic" default="/camera/image"/>
+    <arg name="camera_frame" default="/camera_frame"/>
+    <arg name="marker_size_m"      default="0.05"/> 
+    <arg name="out_frame"       default="base"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+    <arg name="rectified" default="True"/>
+
+
+    <node pkg="aruco_ros" type="marker_publisher" name="aruco_marker_publisher">
+        <remap from="/camera_info" to="$(arg info_topic)" />
+        <remap from="/image" to="$(arg image_topic)" />
+        <param name="image_is_rectified" value="$(arg rectified)"/>
+        <param name="marker_size"        value="$(arg marker_size_m)"/>
+        <param name="reference_frame"    value="$(arg out_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="camera_frame"       value="$(arg camera_frame)"/>
+    </node>
+
+
+  <include file="$(find easy_handeye)/launch/calibrate.launch">
+    <arg name="eye_on_hand" value="false"/>
+    <arg name="namespace" value="my_eob_calib"/>
+
+    <arg name="robot_base_frame" value="/base_link"/>
+    <arg name="robot_effector_frame" value="/ee_link"/>
+
+    <arg name="tracking_base_frame" value="/optical_origin"/>
+    <arg name="tracking_marker_frame" value="/optical_target"/>
+  </include>
+</launch>
+

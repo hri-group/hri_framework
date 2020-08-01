@@ -1,0 +1,11 @@
+#goal definition
+string action #'hold', 'pick_and_place', 'move_to_pose', 'move_to_pose_cartesian', 'pick_and_handoff'
+geometry_msgs/PoseStamped pose1
+geometry_msgs/PoseStamped pose2
+string object_name
+---
+#result definition
+bool success
+---
+#feedback, for now just return "status" e.g. 'running'
+string status #'running'

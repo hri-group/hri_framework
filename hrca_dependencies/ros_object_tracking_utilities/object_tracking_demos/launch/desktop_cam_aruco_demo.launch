@@ -1,0 +1,35 @@
+<launch>
+    <arg name="info_topic" default="/camera/camera_info"/>
+    <arg name="image_topic" default="/camera/image"/>
+    <arg name="camera_frame" default="/camera_frame"/>
+    <arg name="marker_size_m"      default="0.05"/> 
+    <arg name="ref_frame"       default="base"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+    <arg name="rectified" default="True"/>
+
+
+
+
+    <include file="$(find object_tracking_camera_utils)/launch/run_usb_cam.launch">
+        <arg name="video_device" value="/dev/video0"/>
+    </include>
+
+    
+    <include file="$(find object_tracking_wrappers)/launch/aruco_ros_marker_publisher.launch">
+        <arg name="info_topic" value="/usb_cam/camera_info"/>
+        <arg name="image_topic" value="/usb_cam/image_raw"/>
+        <arg name="out_frame" value=""/>
+        <arg name="camera_frame" value="/camera_frame"/>
+        <arg name="rectified" value="False"/>
+    </include>
+
+    <node name="tf_a" pkg="tf" type="static_transform_publisher" 
+          args="0 0 1 0 0 0 world cam_physical_frame 50"/>
+
+    <node name="tf_b" pkg="tf" type="static_transform_publisher" 
+          args="0 0 0 -1.5707 0 -1.5707 cam_physical_frame camera_frame 50"/>
+
+    <node name="tracking" pkg="object_tracking_demos" type="aruco_demo.py" output="screen"/>
+
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find object_tracking_demos)/config/desktop_cam_aruco_rviz.rviz" />
+
+</launch>

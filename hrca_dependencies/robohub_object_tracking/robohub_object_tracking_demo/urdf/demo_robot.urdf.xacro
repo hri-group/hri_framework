@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<robot name="demo_robot_name" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="world"/>
+
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="2 2 0.01" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="base_to_carousel" type="revolute">
+        <parent link="base_link"/>
+        <child link="carousel"/>
+        <origin xyz="0.5 0 0.1" rpy="0 0 0"/>
+        <limit effort="30" velocity="1.0" lower="-3.14" upper="0.314" />
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="carousel">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.25" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+
+
+    <xacro:include filename="$(find aruco_model_generation)/urdf/common/base_aruco_panel.urdf.xacro"/>
+    <xacro:aruco_panel width="0.1" thickness="0.001" id="0"/>
+
+    <joint name="carousel_to_aruco" type="fixed">
+        <parent link="carousel"/>
+        <child link="aruco_0_panel"/>
+        <origin xyz="-0.25 0 0.1" rpy="0 0 0"/>
+    </joint>
+
+
+    <joint name="camera_joint" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin xyz="0 0.05 0.5" rpy="0 0.8 0"/>
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+    </joint>
+
+    <!-- Camera -->
+    <link name="camera_link">
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.1 0.1 0.1"/>
+        </geometry>
+        </collision>
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.1 0.1 0.1"/>
+        </geometry>
+        <material name="black"/>
+        </visual>
+
+        <inertial>
+        <mass value="1e-5" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+
+      <gazebo reference="camera_link">
+    <sensor type="camera" name="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>demo_robot/camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+</robot>
