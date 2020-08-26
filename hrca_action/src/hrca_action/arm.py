@@ -98,6 +98,15 @@ class Arm(object):
         
         return self.moveit_arm_group.get_current_pose()
 
+    def get_current_joint_values(self):
+        """
+        """
+        if not self.use_moveit:
+            raise ValueError('MoveIt! is not initialized, '
+                        'did you pass in use_moveit=True?')
+        
+        return self.moveit_arm_group.get_current_joint_values()
+
     def move_to_home(self):
         """
         Move the arm to its home position
@@ -316,7 +325,7 @@ class Arm(object):
 
             self.set_goal_tolerance(self.goal_tolerance)
 
-            self.gripper = moveit_commander.MoveGroupCommander("hand")
+            self.gripper = moveit_commander.MoveGroupCommander(self.gripper_planning_group)
 
             rospy.wait_for_service('compute_ik')
             self.compute_ik = rospy.ServiceProxy('compute_ik', GetPositionIK)
