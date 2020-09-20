@@ -1,1 +1,0 @@
-robohub_object_tracking/TrackedObjectPose[] object_list
