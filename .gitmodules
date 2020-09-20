@@ -4,3 +4,6 @@
 [submodule "hrca_dependencies/ros_object_tracking_utilities"]
 	path = hrca_dependencies/ros_object_tracking_utilities
 	url = https://github.com/RVSagar/ros_object_tracking_utilities.git
+[submodule "hrca_dependencies/robohub_object_tracking"]
+	path = hrca_dependencies/robohub_object_tracking
+	url = https://github.com/RVSagar/robohub_object_tracking.git
