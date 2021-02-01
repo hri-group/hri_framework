@@ -11,8 +11,8 @@ TODO:
 
 ### Setup:
 - You'll need a ROS workspace to pull this repo into. e.g., [panda_docker](https://github.com/hri-group/panda_docker.git)
-- `git clone https://github.com/hri-group/hri_framework.git` into your catkin workspace `src` folder
-- `catkin build` or `catkin_make` to build all the packages
+- `git clone --recursive https://github.com/hri-group/hri_framework.git` into your catkin workspace `src` folder
+- `catkin build` or `catkin_make` from the root of your catkin workspace to build all the packages
 - `source devel/setup.bash`
 
 ### Instantiating a new Robot Action Module:
