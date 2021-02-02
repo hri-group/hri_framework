@@ -18,3 +18,6 @@ TODO:
 ### Instantiating a new Robot Action Module:
 - Extend the `Arm` class to a new robot and implement any of the abstract methods. See [panda_arm.py](https://github.com/hri-group/hri_framework/blob/master/hrca_action/src/hrca_action/panda_arm.py) for an example. If your robot is MoveIt-enabled the main ones to implement will be any gripper functionality.
 - ...
+
+### Random Commands
+- rosrun hrca_action panda_arm_server.py
