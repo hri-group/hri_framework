@@ -206,7 +206,7 @@ class Arm(object):
         # Perform planning
         # Perform multiple time to get the best path.
         for i in range(iterations):
-            plans.append(self.moveit_arm_group.plan())
+            plans.append(self.moveit_arm_group.plan()[1]) #[1] is to retrieve the RobotTrajectory since ROS melodic returns a tuple now.
             points.append(len(plans[i].joint_trajectory.points))
 
         # Find shortest path
